@@ -15,6 +15,6 @@ namespace Tracker {
 
     int Tracker::track() {
         // Tracking implementation
-        return 0; // Arbitrary value for tracking result
+        return 0;  // Arbitrary value for tracking result
     }
-}
+}  // namespace Tracker
