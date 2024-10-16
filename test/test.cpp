@@ -1,6 +1,7 @@
+#include <gtest/gtest.h>
 #include "detector.hpp"
 #include "tracker.hpp"
-#include <gtest/gtest.h>
+
 
 /**
  * @brief Test case for Detector initialization.

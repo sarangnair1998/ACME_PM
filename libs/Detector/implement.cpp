@@ -15,6 +15,6 @@ namespace Detector {
 
     int Detector::detect() {
         // Detection implementation
-        return 0; // Arbitrary value for detection result
+        return 0;  // Arbitrary value for detection result
     }
-}
+}  // namespace Detector

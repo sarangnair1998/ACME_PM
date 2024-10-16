@@ -1,6 +1,6 @@
+#include <iostream>
 #include "detector.hpp"
 #include "tracker.hpp"
-#include <iostream>
 
 int main() {
     // Create instances of Detector and Tracker
@@ -13,11 +13,11 @@ int main() {
 
     // Perform detection
     int detectionResult = detector.detect();
-    std::cout << "Detection Initalized and value is: " << detectionResult << std::endl;
+    std::cout << "Detection Initalized value:" <<  detectionResult << std::endl;
 
     // Perform tracking
     int trackingResult = tracker.track();
-    std::cout << "Tracking Initialized and value is: " << trackingResult << std::endl;
+    std::cout << "Tracking Initialized value:" << trackingResult << std::endl;
 
     return 0;
 }
