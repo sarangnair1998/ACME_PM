@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
 
-#include "lib1.hpp"
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+/**
+ * @brief Main function to run all tests.
+ */
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

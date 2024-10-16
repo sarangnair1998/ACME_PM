@@ -51,7 +51,7 @@ Use CMake to configure and build the project:
   cmake --build build/ --verbose
 
 # Run program:
-  ./build/app/perception_module
+  ./build/app/acme_pm
 # Clean
   cmake --build build/ --target clean
 # Clean and start over:

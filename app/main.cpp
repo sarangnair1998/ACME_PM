@@ -1,14 +1,23 @@
+#include "detector.hpp"
+#include "tracker.hpp"
 #include <iostream>
-#include <AnalogSensor.hpp>
 
-int main()
-{
-    AnalogSensor lightSensor(5);
-    std::cout << "Averaged sensor reading: " << lightSensor.Read() << std::endl;
-    bool terminator;
-    if( terminator )
-    {
-        std::cout << "DONE" << std::endl;
-    }
+int main() {
+    // Create instances of Detector and Tracker
+    Detector::Detector detector;
+    Tracker::Tracker tracker;
+
+    // Initialize components
+    detector.initialize();
+    tracker.initialize();
+
+    // Perform detection
+    int detectionResult = detector.detect();
+    std::cout << "Detection Initalized and value is: " << detectionResult << std::endl;
+
+    // Perform tracking
+    int trackingResult = tracker.track();
+    std::cout << "Tracking Initialized and value is: " << trackingResult << std::endl;
+
     return 0;
 }
