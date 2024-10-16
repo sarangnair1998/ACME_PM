@@ -23,11 +23,14 @@ Programming Language: C++ for high efficiency and real-time performance.
 
 Build System: CMake for managing project builds and dependencies.
 
+Yolov4
+
 ## Libraries:
 
 OpenCV: For image processing and video handling.
 
 GoogleTest: For unit testing to ensure code quality.
+
 
 ## Installation
 
@@ -74,6 +77,10 @@ include/: Header files for the module.
 tests/: Unit tests developed using GoogleTest.
 
 CMakeLists.txt: Build configuration file.
+
+## AIP workflow is being followed
+
+The initial product backlog can be found here - https://docs.google.com/spreadsheets/d/19n18qKphQGY4qy_kX4KHc_CbB6oyr3eH/edit?usp=sharing&ouid=104145698794059197837&rtpof=true&sd=true
 
 ## Team Members
 
