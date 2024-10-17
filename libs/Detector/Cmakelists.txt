@@ -1,2 +1,0 @@
-add_library(detector_lib SHARED implement.cpp)
-target_include_directories(detector_lib PUBLIC .)
