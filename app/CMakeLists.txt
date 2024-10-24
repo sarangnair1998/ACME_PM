@@ -4,6 +4,11 @@ add_executable(acme_pm
   main.cpp
   )
 
+# Include the directory for Tracker
+target_include_directories(acme_pm PRIVATE ${PROJECT_SOURCE_DIR}/libs/Tracker)
+
+# Include the directory for Detector
+target_include_directories(acme_pm PRIVATE ${PROJECT_SOURCE_DIR}/libs/Detector)
 
 # Any dependent libraires needed to build this target.
 target_link_libraries(acme_pm PUBLIC
