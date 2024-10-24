@@ -104,13 +104,18 @@ Push to Branch: (git push origin feature-branch)
 
 Open a Pull Request
 
-## Video Presentation of our Proposal
+## Video Presentation of our Proposal- Phase 0
 
 
 
 https://github.com/user-attachments/assets/322d0d07-f3bc-4b59-b323-c51a00ef10b9
 
 
+## Video Presentation of our Proposal- Phase 1
+
+Link to our Phase 1 video can be found below
+
+https://youtu.be/aMdScIC5fSo
 
 
 ## License
