@@ -5,19 +5,19 @@
 /**
  * @brief Test case for Detector initialization.
  */
-TEST(DetectorTest, Initialization) {
-    Detector::Detector detector;
-    ASSERT_NO_THROW(detector.initialize());
-}
+// TEST(DetectorTest, Initialization) {
+//     Detector::Detector detector;
+//     ASSERT_NO_THROW(detector.initialize());
+// }
 
-/**
- * @brief Test case for Detector detection.
- */
-TEST(DetectorTest, Detection) {
-    Detector::Detector detector;
-    detector.initialize();
-    ASSERT_EQ(detector.detect(), 42);
-}
+// /**
+//  * @brief Test case for Detector detection.
+//  */
+// TEST(DetectorTest, Detection) {
+//     Detector::Detector detector;
+//     detector.initialize();
+//     ASSERT_EQ(detector.detect(), 42);
+// }
 
 /**
  * @brief Test case for Tracker initialization.

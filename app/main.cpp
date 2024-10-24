@@ -4,7 +4,8 @@
 
 int main() {
     // Create instances of Detector and Tracker
-    Detector::Detector detector;
+
+    Detector::ObjectDetector detector;
     Tracker::Tracker tracker;
 
     // Initialize components
@@ -12,9 +13,8 @@ int main() {
     tracker.initialize();
 
     // Perform detection
-    int detectionResult = detector.detect();
-    std::cout << "Detection Initalized value:" <<  detectionResult << std::endl;
-
+    detector.start();
+    
     // Create a dummy measurement for tracking
     cv::Point2f measurement(10.0f, 20.0f);  // Example measurement values
 
