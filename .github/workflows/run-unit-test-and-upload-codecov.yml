@@ -15,14 +15,13 @@
 name: Run Unit Test and Upload Coverage Report
 
 on:
-  # Triggered whenever push to main 
+  # Trigger on push to any branch
   push:
-    branches: [ "main" ]
+    branches: [ "*" ]
 
-  # Triggered whenever a pull request is created on main
+  # Trigger on pull request to any branch
   pull_request:
-    branches: [ "main" ]
-    types: [opened]
+    branches: [ "*" ]
 
   # Allow manual trigger
   workflow_dispatch:
@@ -49,11 +48,17 @@ jobs:
         run: |
           cmake -D WANT_COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -S ./ -B build/
           cmake --build build/ --clean-first --target all
-          cmake --build build/ --target test_coverage
 
       # Run unit tests
       - name: Run Tests
         run: ctest --test-dir build/
+
+      # Generate Coverage Report
+      - name: Generate Coverage Report
+        run: |
+          lcov --capture --directory build/ --output-file build/coverage.info
+          lcov --remove build/coverage.info '/usr/*' '*/_deps/*' --output-file build/coverage_filtered.info
+          mv build/coverage_filtered.info build/coverage.info
 
       # Upload coverage result to CodeCov
       - name: Upload coverage result to CodeCov
