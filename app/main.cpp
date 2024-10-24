@@ -15,8 +15,11 @@ int main() {
     int detectionResult = detector.detect();
     std::cout << "Detection Initalized value:" <<  detectionResult << std::endl;
 
+    // Create a dummy measurement for tracking
+    cv::Point2f measurement(10.0f, 20.0f);  // Example measurement values
+
     // Perform tracking
-    int trackingResult = tracker.track();
+    int trackingResult = tracker.track(measurement);
     std::cout << "Tracking Initialized value:" << trackingResult << std::endl;
 
     return 0;

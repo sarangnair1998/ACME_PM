@@ -1,5 +1,5 @@
-![CICD Workflow status](https://github.com/sarangnair1998/ACME_PM/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg) 
-[![codecov](https://codecov.io/gh/sarangnair1998/ACME_PM/branch/main/graph/badge.svg)](https://codecov.io/gh/sarangnair1998/ACME_PM) 
+![CICD Workflow status](https://github.com/Prathinav-kV/ACME_PM/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg) 
+[![codecov](https://codecov.io/gh/Prathinav-kV/ACME_PM/graph/badge.svg?token=KVRGXJYNSB)](https://codecov.io/gh/Prathinav-kV/ACME_PM)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 

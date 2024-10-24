@@ -2,7 +2,6 @@
 #include "detector.hpp"
 #include "tracker.hpp"
 
-
 /**
  * @brief Test case for Detector initialization.
  */
@@ -32,7 +31,14 @@ TEST(TrackerTest, Initialization) {
  * @brief Test case for Tracker tracking.
  */
 TEST(TrackerTest, Tracking) {
+    // Create an instance of Tracker
     Tracker::Tracker tracker;
     tracker.initialize();
-    ASSERT_EQ(tracker.track(), 7);
+
+    // Create a dummy measurement for tracking
+    cv::Point2f measurement(10.0f, 20.0f);
+
+    // Call track() with the measurement and check the result
+    ASSERT_EQ(tracker.track(measurement), 0);
+    // Assuming track returns 0 for success
 }
