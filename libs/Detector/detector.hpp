@@ -6,31 +6,33 @@
  */
 
 namespace Detector {
+
+/**
+ * @class Detector
+ * @brief Class for detecting humans using computer vision techniques.
+ */
+class Detector {
+ public:
     /**
-     * @class Detector
-     * @brief Class for detecting humans using computer vision techniques.
+     * @brief Constructor for Detector.
      */
-    class Detector {
-    public:
-        /**
-         * @brief Constructor for Detector.
-         */
-        Detector();
+    Detector();
 
-        /**
-         * @brief Destructor for Detector.
-         */
-        ~Detector();
+    /**
+     * @brief Destructor for Detector.
+     */
+    ~Detector();
 
-        /**
-         * @brief Method to initialize the detector.
-         */
-        void initialize();
+    /**
+     * @brief Method to initialize the detector.
+     */
+    void initialize();
 
-        /**
-         * @brief Method to detect humans.
-         * @return An integer representing detection status.
-         */
-        int detect();
-    };
-}
+    /**
+     * @brief Method to detect humans.
+     * @return An integer representing detection status.
+     */
+    int detect();
+};
+
+}  // namespace Detector
