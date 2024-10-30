@@ -7,24 +7,55 @@ namespace Detector {
                             const string& weightsPath, 
                             const string& classesPath)
                             : minConfidenceScore(0.5), nmsThreshold(0.4)
+    // {   
+    //     // load model
+    //     net = readNetFromDarknet(configPath, weightsPath);
+
+    //     if (net.empty()) {
+    //         cerr << "Failed to load network!" << endl;
+    //         throw runtime_error("Failed to load network");
+    //     }
+
+
+    //     // Load class names from file
+    //     ifstream ifs(classesPath.c_str());
+    //     string line;
+    //     while (getline(ifs, line)) {
+    //         classNames.push_back(line);
+    //     }
+
+    //     // net.setPreferableBackend(DNN_BACKEND_OPENCV);
+    // }
     {   
-        // load model
+    // Load model
+    try {
         net = readNetFromDarknet(configPath, weightsPath);
+    } catch (const cv::Exception& e) {
+        cerr << "Error loading network: " << e.what() << endl;
+        throw runtime_error("Failed to initialize YOLODetector: " + string(e.what()));
+    }
 
-        if (net.empty()) {
-            cerr << "Failed to load network!" << endl;
-            throw runtime_error("Failed to load network");
-        }
+    if (net.empty()) {
+        cerr << "Failed to load network!" << endl;
+        throw runtime_error("Failed to load network");
+    }
 
-        // Load class names from file
-        ifstream ifs(classesPath.c_str());
-        string line;
-        while (getline(ifs, line)) {
+    // Load class names from file
+    ifstream ifs(classesPath.c_str());
+    string line;
+    while (getline(ifs, line)) {
+        if (!line.empty()) {  // Avoid adding empty lines
             classNames.push_back(line);
         }
-
-        // net.setPreferableBackend(DNN_BACKEND_OPENCV);
     }
+
+    if (classNames.empty()) {
+        cerr << "Failed to load class names!" << endl;
+        throw runtime_error("Failed to load class names");
+    }
+
+    // net.setPreferableBackend(DNN_BACKEND_OPENCV);
+}
 
     void YOLODetector::drawPred(int classId, 
                                 float conf, 
@@ -124,6 +155,14 @@ namespace Detector {
 
         cap.release();
         destroyAllWindows();
+    }
+
+    const Net& YOLODetector::getNet() const {
+    return net;
+    }
+
+    const vector<string> YOLODetector::get_className() const{
+        return classNames;
     }
 
 }  // namespace Detector

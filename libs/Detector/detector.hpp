@@ -28,12 +28,20 @@ namespace Detector {
     class YOLODetector {
         
         public:
+            // constructor
             YOLODetector(const string& configPath, const string& weightsPath, const string& classesPath);
+            //Initialize video capture 
             void videoStream();
+            // getter for net
+            const Net& getNet() const;
+
+            void drawPred(int classId, float conf, int left, int top, int right, int bottom, Mat& frame);
+
+            void postprocess(Mat& image, const vector<Mat>& output);
+
+            const vector<string> get_className() const;
 
         private:
-            void drawPred(int classId, float conf, int left, int top, int right, int bottom, Mat& frame);
-            void postprocess(Mat& image, const vector<Mat>& output);
 
             Net net;
             vector<string> classNames;

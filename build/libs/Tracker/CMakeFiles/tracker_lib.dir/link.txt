@@ -1,2 +1,0 @@
-/usr/bin/ar qc libtracker_lib.a CMakeFiles/tracker_lib.dir/implement.cpp.o
-/usr/bin/ranlib libtracker_lib.a
