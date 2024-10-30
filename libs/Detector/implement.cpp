@@ -7,25 +7,6 @@ namespace Detector {
                             const string& weightsPath, 
                             const string& classesPath)
                             : minConfidenceScore(0.5), nmsThreshold(0.4)
-    // {   
-    //     // load model
-    //     net = readNetFromDarknet(configPath, weightsPath);
-
-    //     if (net.empty()) {
-    //         cerr << "Failed to load network!" << endl;
-    //         throw runtime_error("Failed to load network");
-    //     }
-
-
-    //     // Load class names from file
-    //     ifstream ifs(classesPath.c_str());
-    //     string line;
-    //     while (getline(ifs, line)) {
-    //         classNames.push_back(line);
-    //     }
-
-    //     // net.setPreferableBackend(DNN_BACKEND_OPENCV);
-    // }
     {   
     // Load model
     try {
@@ -55,7 +36,7 @@ namespace Detector {
     }
 
     // net.setPreferableBackend(DNN_BACKEND_OPENCV);
-}
+    }
 
     void YOLODetector::drawPred(int classId, 
                                 float conf, 
@@ -120,7 +101,7 @@ namespace Detector {
         }
     }
 
-    void YOLODetector::videoStream()
+    void YOLODetector::videoStream(bool testMode)
     {
         vector<string> outputLayerNames = net.getUnconnectedOutLayersNames();
 
@@ -129,6 +110,8 @@ namespace Detector {
             cerr << "Error opening video stream or file" << endl;
             return;
         }
+
+        int frameCount = 0;
 
         while (cap.isOpened()) {
             Mat image;
@@ -146,6 +129,11 @@ namespace Detector {
 
             postprocess(image, output);
             imshow("YOLO Detection", image);
+
+            frameCount++;
+            if (testMode && frameCount >= 1) {  // Exit after one frame in test mode
+                break;
+            }
 
             int k = waitKey(10);
             if (k == 113) { // Press 'q' to exit

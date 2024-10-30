@@ -10,7 +10,6 @@ target_link_libraries(cpp-test PUBLIC
   # list of libraries:
   gtest
   detector_lib
-  tracker_lib
 )
 
 # Include the directory for Tracker

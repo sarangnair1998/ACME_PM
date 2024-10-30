@@ -4,9 +4,6 @@ add_executable(acme_pm
   main.cpp
   )
 
-# Include the directory for Tracker
-target_include_directories(acme_pm PRIVATE ${PROJECT_SOURCE_DIR}/libs/Tracker)
-
 # Include the directory for Detector
 target_include_directories(acme_pm PRIVATE ${PROJECT_SOURCE_DIR}/libs/Detector)
 
@@ -14,7 +11,6 @@ target_include_directories(acme_pm PRIVATE ${PROJECT_SOURCE_DIR}/libs/Detector)
 target_link_libraries(acme_pm PUBLIC
   # list of libraries:
   detector_lib
-  tracker_lib
   )
 
   # Specify the URL for YOLOv3 weights and destination path

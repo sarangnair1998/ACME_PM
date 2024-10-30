@@ -31,7 +31,7 @@ namespace Detector {
             // constructor
             YOLODetector(const string& configPath, const string& weightsPath, const string& classesPath);
             //Initialize video capture 
-            void videoStream();
+            void videoStream(bool testMode = false);
             // getter for net
             const Net& getNet() const;
 
