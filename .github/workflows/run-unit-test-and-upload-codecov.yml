@@ -15,6 +15,7 @@
 name: Run Unit Test and Upload Coverage Report
 
 on:
+# <<<<<<< phase2_dev
   # Trigger on push to any branch
   push:
     branches: [ "*" ]
@@ -22,6 +23,16 @@ on:
   # Trigger on pull request to any branch
   pull_request:
     branches: [ "*" ]
+# =======
+  # Triggered whenever push to main 
+#   push:
+#     branches: [ "main" ]
+
+#   # Triggered whenever a pull request is created on main
+#   pull_request:
+#     branches: [ "main" ]
+#     types: [opened]
+# >>>>>>> main
 
   # Allow manual trigger
   workflow_dispatch:
@@ -48,11 +59,16 @@ jobs:
         run: |
           cmake -D WANT_COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -S ./ -B build/
           cmake --build build/ --clean-first --target all
+# <<<<<<< phase2_dev
+# =======
+#           cmake --build build/ --target test_coverage
+# >>>>>>> main
 
       # Run unit tests
-      - name: Run Tests
+#       - name: Run Tests
         run: ctest --test-dir build/
 
+# <<<<<<< phase2_dev
       # Generate Coverage Report
       - name: Generate Coverage Report
         run: |
@@ -60,6 +76,8 @@ jobs:
           lcov --remove build/coverage.info '/usr/*' '*/_deps/*' --output-file build/coverage_filtered.info
           mv build/coverage_filtered.info build/coverage.info
 
+# =======
+# # >>>>>>> main
       # Upload coverage result to CodeCov
       - name: Upload coverage result to CodeCov
         uses: codecov/codecov-action@v3

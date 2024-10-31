@@ -92,6 +92,7 @@ if(WANT_COVERAGE)
     NAME test_coverage
     # EXECUTABLE ctest
     EXECUTABLE cpp-test
+
     EXCLUDE
       "app/main.cpp"
       "*gtest*"
