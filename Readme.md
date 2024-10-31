@@ -112,6 +112,12 @@ Link to our Phase 1 video can be found below
 
 https://youtu.be/aMdScIC5fSo
 
+## Video Presentation of our Proposal- Phase 2 Final
+
+Link to our Phase 2 video can be found below
+
+https://youtu.be/Y-Dt1c40nVQ
+
 
 ## License
 
