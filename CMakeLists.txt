@@ -90,7 +90,9 @@ if(WANT_COVERAGE)
   # Unit test coverage:
   setup_target_for_coverage_lcov(
     NAME test_coverage
-    EXECUTABLE ctest
+    # EXECUTABLE ctest
+    EXECUTABLE cpp-test
+
     EXCLUDE
       "app/main.cpp"
       "*gtest*"
