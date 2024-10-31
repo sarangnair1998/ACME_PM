@@ -1,41 +1,19 @@
-##############################################################################
-#
-# GitHub CI workflow syntax spec:
-#    https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
-#
-# CodeCov GitHub action setup:
-#    https://github.com/codecov/codecov-action
-#
-# CodeCov badge setup:
-#    https://docs.codecov.com/docs/status-badges
-#
-# version 1.2
-##############################################################################
-
 name: Run Unit Test and Upload Coverage Report
 
 on:
-  # Trigger on push to any branch
   push:
     branches: [ "*" ]
-
-  # Trigger on pull request to any branch
   pull_request:
     branches: [ "*" ]
-
-  # Allow manual trigger
   workflow_dispatch:
 
 jobs:
   build-run-upload:
-    # Create a container of the latest Ubuntu
     runs-on: ubuntu-22.04
     
     steps:
-      # Check out the branch
       - uses: actions/checkout@v3
       
-      # Install necessary system packages, including OpenCV and coverage tools
       - name: Install build packages
         run: |
           sudo apt update
@@ -43,28 +21,27 @@ jobs:
           sudo apt install -y doxygen lcov gcovr
           sudo apt-get install -y libopencv-dev
 
-      # Configure CMake flags, build executables with coverage flags
       - name: Configure CMake flags and build executables
         run: |
           cmake -D WANT_COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -S ./ -B build/
-          cmake --build build/ --clean-first --target all
+          cmake --build build/ --target cpp-test --clean-first
 
-      # Run unit tests with the specified test executable
+      - name: List build directory
+        run: ls -R build
+
       - name: Run Tests
-        run: ./build/cpp-test
+        run: ./build/test/cpp-test
 
-      # Generate Coverage Report
       - name: Generate Coverage Report
         run: |
           lcov --capture --directory build/ --output-file build/coverage.info
           lcov --remove build/coverage.info '/usr/*' '*/_deps/*' --output-file build/coverage_filtered.info
           mv build/coverage_filtered.info build/coverage.info
 
-      # Upload coverage result to CodeCov
       - name: Upload coverage result to CodeCov
         uses: codecov/codecov-action@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }} # Not required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: build/coverage.info
-          fail_ci_if_error: true # optional (default = false)
-          verbose: true # optional (default = false)
+          fail_ci_if_error: true
+          verbose: true
