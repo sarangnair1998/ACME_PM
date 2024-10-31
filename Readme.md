@@ -3,34 +3,29 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 
-# Multipurpose Perception Module for Acme
+# Multipurpose Perception Module for ACME 
 
 ## Overview
-
-The Multipurpose Perception Module is a versatile system designed to enhance the perception capabilities of Acme's robotic platforms by detecting and tracking one or more humans in real-time using a monocular camera. The module uses a pre-trained YOLOv4 model for human detection and a Kalman filter for tracking, providing reliable human location data that can be used for efficient navigation and safe interaction in dynamic environments.
+The Multipurpose Perception Module is an advanced object detection and tracking system developed for ACME Robotics. This module leverages the YOLOv3 model to perform real-time human detection using a laptop webcam or a video stream. Built on OpenCV and DNN libraries, the module captures, detects, and tracks human subjects in real-time, providing crucial perception capabilities for autonomous systems in a compact and efficient implementation.
 
 ## Key Features
-
-- Real-Time Human Detection: Uses YOLOv4 to accurately detect humans in the video stream.
-
-- Human Tracking: Employs Kalman filters to estimate smooth human trajectories and ensure stable tracking.
-
-- Coordinate Transformation: Provides location data in the robot's reference frame for effective path planning.
+- *Human Detection:* Detects human objects in real-time using the YOLOv3 model.
+- *Bounding Box Annotation:* Draws bounding boxes around detected objects with class names and confidence scores.
+- *Non-Maximum Suppression (NMS):* Filters overlapping detections to improve accuracy and reduce duplicate bounding boxes.
+- *Confidence Thresholding:* Customizable minimum confidence score to filter low-confidence detections.
+- *Real-Time Processing:* Processes live video streams from a laptop webcam, displaying results in real-time.
+- *Robust Tracking (Future Integration):* Includes an interface for seamless integration with tracking algorithms, allowing consistent tracking of detected objects across frames.
 
 ## Technologies Used
+- *YOLOv3*: Used for high-performance real-time object detection.
+- *OpenCV DNN Module*: Provides an interface for loading and running the YOLO model.
+- *C++*: Core programming language used for implementation.
+- *CMake*: Used for build management.
+- *GitHub*: Version control and collaboration.
 
-Programming Language: C++ for high efficiency and real-time performance.
-
-Build System: CMake for managing project builds and dependencies.
-
-Yolov4
-
-## Libraries:
-
-OpenCV: For image processing and video handling.
-
-GoogleTest: For unit testing to ensure code quality.
-
+## Libraries
+- *OpenCV*: Includes the core, highgui, dnn, and videoio modules, enabling image processing, video streaming, and deep learning capabilities.
+- *C++ Standard Library*: Provides foundational functionality like I/O operations and string manipulation.
 
 ## Installation
 
