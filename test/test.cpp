@@ -16,14 +16,14 @@ using namespace std;
 class YOLODetectorTest : public ::testing::Test {
 protected:
     unique_ptr<YOLODetector> detector;
-    // const string configPath = "../config/yolov3.cfg";       
-    // const string weightsPath = "../model/yolov3.weights"; 
-    // const string classesPath = "../labels/coco.names"; 
+    const string configPath = "../config/yolov3.cfg";       
+    const string weightsPath = "../model/yolov3.weights"; 
+    const string classesPath = "../labels/coco.names"; 
 
     // Absoulte path
-    const string configPath = "/home/abhey/Desktop/Masters/Software_Dev/midterm/ACME_PM/config/yolov3.cfg";       
-    const string weightsPath = "/home/abhey/Desktop/Masters/Software_Dev/midterm/ACME_PM/model/yolov3.weights"; 
-    const string classesPath = "/home/abhey/Desktop/Masters/Software_Dev/midterm/ACME_PM/labels/coco.names"; 
+    // const string configPath = "/home/abhey/Desktop/Masters/Software_Dev/midterm/ACME_PM/config/yolov3.cfg";       
+    // const string weightsPath = "/home/abhey/Desktop/Masters/Software_Dev/midterm/ACME_PM/model/yolov3.weights"; 
+    // const string classesPath = "/home/abhey/Desktop/Masters/Software_Dev/midterm/ACME_PM/labels/coco.names"; 
 
     virtual void SetUp() override {
         // Instantiate YOLODetector object
