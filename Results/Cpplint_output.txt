@@ -1,5 +1,4 @@
-
-21:03:21 ~/SEM3/ENPM700/Phase_1/ACME_PM (kalman_filter_integration *%) $ find . -name "*.cpp" -o -name "*.hpp" | grep -v "/build/" | xargs cpplint --filter="-legal/copyright"
+00:11:37 ~/SEM3/ENPM700/Final_phase/ACME_PM (main *%) $ find . -name "*.cpp" -o -name "*.hpp" | xargs cpplint
 Done processing ./app/main.cpp
 Done processing ./libs/Detector/detector.hpp
 Done processing ./libs/Detector/implement.cpp
@@ -7,3 +6,4 @@ Done processing ./libs/Tracker/implement.cpp
 Done processing ./libs/Tracker/tracker.hpp
 Done processing ./test/main.cpp
 Done processing ./test/test.cpp
+

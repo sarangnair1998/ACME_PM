@@ -1,3 +1,3 @@
-21:03:38 ~/SEM3/ENPM700/Phase_1/ACME_PM (kalman_filter_integration *%) $ find . -name "*.cpp" -o -name "*.hpp" | grep -v "/build/" | xargs clang-tidy -p ./
+00:12:03 ~/SEM3/ENPM700/Final_phase/ACME_PM (main *%) $  clang-format -i --style=Google $(find . -name *.cpp -o -name *.hpp | grep -v "/build/")
 
-21:03:47 ~/SEM3/ENPM700/Phase_1/ACME_PM (kalman_filter_integration *%) $ 
+00:12:33 ~/SEM3/ENPM700/Final_phase/ACME_PM (main *%) $ 

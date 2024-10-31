@@ -1,3 +1,4 @@
+// Copyright [2024] Abhey Sharma, Prathinav K V, Sarang Nair
 #include "tracker.hpp"
 
 namespace Tracker {
@@ -12,24 +13,21 @@ Tracker::Tracker()
       state(4, 1, CV_32F),
       measurement(2, 1, CV_32F),
       isInitialized(false) {
-    // Initialize Kalman filter matrices
-    kf.transitionMatrix = (cv::Mat_<float>(4, 4) << 1, 0, 1, 0,
-                                                    0, 1, 0, 1,
-                                                    0, 0, 1, 0,
-                                                    0, 0, 0, 1);
+  // Initialize Kalman filter matrices
+  kf.transitionMatrix =
+      (cv::Mat_<float>(4, 4) << 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1);
 
-    kf.measurementMatrix = (cv::Mat_<float>(2, 4) << 1, 0, 0, 0,
-                                                     0, 1, 0, 0);
+  kf.measurementMatrix = (cv::Mat_<float>(2, 4) << 1, 0, 0, 0, 0, 1, 0, 0);
 
-    cv::setIdentity(kf.processNoiseCov,
-     cv::Scalar::all(1e-2));  // Process noise covariance
-    cv::setIdentity(kf.measurementNoiseCov,
-     cv::Scalar::all(1e-1));  // Measurement noise covariance
-    cv::setIdentity(kf.errorCovPost,
-     cv::Scalar::all(1));  // Error covariance
+  cv::setIdentity(kf.processNoiseCov,
+                  cv::Scalar::all(1e-2));  // Process noise covariance
+  cv::setIdentity(kf.measurementNoiseCov,
+                  cv::Scalar::all(1e-1));  // Measurement noise covariance
+  cv::setIdentity(kf.errorCovPost,
+                  cv::Scalar::all(1));  // Error covariance
 
-    state.setTo(cv::Scalar(0));
-    measurement.setTo(cv::Scalar(0));
+  state.setTo(cv::Scalar(0));
+  measurement.setTo(cv::Scalar(0));
 }
 
 /**
@@ -37,7 +35,7 @@ Tracker::Tracker()
  * Cleans up resources allocated for the tracker.
  */
 Tracker::~Tracker() {
-    // Destructor implementation
+  // Destructor implementation
 }
 
 /**
@@ -45,39 +43,40 @@ Tracker::~Tracker() {
  * Sets the initial state and flags the tracker as initialized.
  */
 void Tracker::initialize() {
-    // Set initial state
-    state.setTo(cv::Scalar(0));
-    isInitialized = true;
+  // Set initial state
+  state.setTo(cv::Scalar(0));
+  isInitialized = true;
 }
 
 /**
  * @brief Tracks the target based on the given measurement.
- * This method uses the Kalman filter to predict and correct the state of the target.
+ * This method uses the Kalman filter to predict and correct the state of the
+ * target.
  *
  * @param meas The observed position of the target.
  * @return int Status of the tracking operation (0 for success).
  */
 int Tracker::track(const cv::Point2f& meas) {
-    if (!isInitialized) {
-        initialize();
-        // Set initial state to the measurement
-        state.at<float>(0) = meas.x;
-        state.at<float>(1) = meas.y;
-        kf.statePost = state;
-    }
+  if (!isInitialized) {
+    initialize();
+    // Set initial state to the measurement
+    state.at<float>(0) = meas.x;
+    state.at<float>(1) = meas.y;
+    kf.statePost = state;
+  }
 
-    // Prediction step
-    cv::Mat prediction = kf.predict();
-    cv::Point2f predictPt(prediction.at<float>(0), prediction.at<float>(1));
+  // Prediction step
+  cv::Mat prediction = kf.predict();
+  cv::Point2f predictPt(prediction.at<float>(0), prediction.at<float>(1));
 
-    // Correction step with measurement update
-    measurement.at<float>(0) = meas.x;
-    measurement.at<float>(1) = meas.y;
-    kf.correct(measurement);
+  // Correction step with measurement update
+  measurement.at<float>(0) = meas.x;
+  measurement.at<float>(1) = meas.y;
+  kf.correct(measurement);
 
-    return 0;
-    // Return success status
-    // (could be modified based on requirements)
+  return 0;
+  // Return success status
+  // (could be modified based on requirements)
 }
 
 /**
@@ -87,8 +86,8 @@ int Tracker::track(const cv::Point2f& meas) {
  * @return cv::Point2f The predicted position of the target.
  */
 cv::Point2f Tracker::getPredictedPosition() {
-    cv::Mat prediction = kf.predict();
-    return cv::Point2f(prediction.at<float>(0), prediction.at<float>(1));
+  cv::Mat prediction = kf.predict();
+  return cv::Point2f(prediction.at<float>(0), prediction.at<float>(1));
 }
 
 }  // namespace Tracker
